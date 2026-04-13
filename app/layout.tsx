@@ -1,7 +1,8 @@
+import { ThemeProvider } from "@/components/ThemeProvider";
+import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Merriweather } from "next/font/google";
 import "./globals.css";
-import { cn } from "@/lib/utils";
 
 const geistMonoHeading = Geist_Mono({subsets:['latin'],variable:'--font-heading'});
 
@@ -32,7 +33,15 @@ export default function RootLayout({
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-serif", merriweather.variable, geistMonoHeading.variable)}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body ><ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+          </ThemeProvider>
+</body>
     </html>
   );
 }
