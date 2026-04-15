@@ -1,12 +1,15 @@
-import { ThemeProvider } from "@/components/ThemeProvider";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import { cn } from "@/lib/utils";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Merriweather } from "next/font/google";
-import "./globals.css";
+import "@/app/styles/globals.css";
+import { Toaster } from "@/components/ui/sonner";
+import Header from "@/components/Header";
 
-const geistMonoHeading = Geist_Mono({subsets:['latin'],variable:'--font-heading'});
 
-const merriweather = Merriweather({subsets:['latin'],variable:'--font-serif'});
+const geistMonoHeading = Geist_Mono({ subsets: ['latin'], variable: '--font-heading' });
+
+const merriweather = Merriweather({ subsets: ['latin'], variable: '--font-serif' });
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,16 +35,24 @@ export default function RootLayout({
     <html
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-serif", merriweather.variable, geistMonoHeading.variable)}
+      suppressHydrationWarning
     >
-      <body ><ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>
-</body>
+      <body >
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <div className="flex min-h-screen w-full flex-col">
+            <Header />
+            <main className="flex flex-1 flex-col px-4 pt-10 xl:px-8">
+              {children}
+            </main>
+          <Toaster />
+          </div>
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
