@@ -2,7 +2,7 @@ import { shadow } from '@/app/styles/utils'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from './ui/button'
-import nextIcon from '@/public/next.svg'
+import nextIcon from '@/public/image.png'
 
 
 function Header() {
@@ -20,13 +20,13 @@ function Header() {
                 <h1 className='flex flex-col font-bold leading-6'>NEXT <span>Notes</span></h1>
             </Link>
 
-            <div className="flex gap-4">
+            <div className=" justify-center items-center flex gap-4 ">
                 {
                     user ? ("Logout") : (<>
 
-                        <Button asChild><Link href="/signup"> Sign up </Link></Button>
+                        <Button asChild className='hidden sm:inline-flex' ><Link href="/signup" >Sign up</Link></Button>
 
-                        <Button asChild variant='outline'><Link href="/login">Login </Link></Button>
+                        <Button asChild variant='outline'><Link href="/login">Login</Link></Button>
 
                     </>)
                 }
