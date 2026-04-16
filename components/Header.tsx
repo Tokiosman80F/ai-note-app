@@ -1,8 +1,8 @@
 import { shadow } from '@/app/styles/utils'
+import nextIcon from '@/public/image.png'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from './ui/button'
-import nextIcon from '@/public/image.png'
 
 
 function Header() {

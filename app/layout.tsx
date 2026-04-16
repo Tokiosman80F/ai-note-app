@@ -1,10 +1,10 @@
-import { ThemeProvider } from "@/providers/ThemeProvider";
+import "@/app/styles/globals.css";
+import Header from "@/components/Header";
+import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/providers/ThemeProvider";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Merriweather } from "next/font/google";
-import "@/app/styles/globals.css";
-import { Toaster } from "@/components/ui/sonner";
-import Header from "@/components/Header";
 
 
 const geistMonoHeading = Geist_Mono({ subsets: ['latin'], variable: '--font-heading' });
@@ -33,9 +33,10 @@ export default function RootLayout({
 }>) {
   return (
     <html
+      suppressHydrationWarning
       lang="en"
       className={cn("h-full", "antialiased", geistSans.variable, geistMono.variable, "font-serif", merriweather.variable, geistMonoHeading.variable)}
-      suppressHydrationWarning
+    
     >
       <body >
         <ThemeProvider
